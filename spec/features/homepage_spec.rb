@@ -7,6 +7,12 @@ feature 'Homepage' do
     expect(page.status_code).to eq(200)
   end
 
+  scenario 'Welcome message' do
+    visit root_path
+
+    expect(page).to have_content('Bem vindo ao Marketplace')
+  end
+
   scenario 'must have link to register' do
     visit root_path
 

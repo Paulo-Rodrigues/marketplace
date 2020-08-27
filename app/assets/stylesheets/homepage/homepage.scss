@@ -1,0 +1,26 @@
+.homepage {
+  height: 100%;
+  background-image: radial-gradient( rgba(51, 51, 51, 0.5), rgba(51, 51, 51, 0.5) ), url(banner.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    background-color: rgba(143, 141, 141, 0.534);
+  }
+
+  a {
+    margin-top: 10px;
+  }
+}
