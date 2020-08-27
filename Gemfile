@@ -13,6 +13,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'devise'
+
 group :test do
   gem 'shoulda-matchers'
 end
