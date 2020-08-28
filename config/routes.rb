@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get 'profile/:id', to: 'users#show', as: :profile
 
+  resources :products, only: [:index]
+
   root 'homepage#index'
 end

@@ -7,5 +7,6 @@ RSpec.describe Company, type: :model do
 
   context 'associations' do
     it {is_expected.to have_many(:users).dependent(:destroy)}
+    it {is_expected.to have_many(:products).dependent(:destroy)}
   end
 end

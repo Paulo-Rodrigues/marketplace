@@ -13,4 +13,8 @@ RSpec.describe User, type: :model do
   context 'callbacks' do
     it {is_expected.to callback(:set_company).before(:validation)}
   end
+
+  context 'associations' do
+    it {is_expected.to have_many(:products).dependent(:destroy)}
+  end
 end
