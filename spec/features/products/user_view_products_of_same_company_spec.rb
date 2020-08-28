@@ -35,4 +35,17 @@ feature 'User view products from the same company employees' do
     expect(page).to have_content(employee1_products.name)
     expect(page).to have_content(employee2_products.name)
   end
+
+  scenario 'with details' do
+    employee1 = create(:user_with_profile)
+    employee1_products = create(:product, user: employee1)
+    user = create(:user, email: 'testuser@company.com'); login_as(user)
+
+    visit products_path
+
+    click_link employee1_products.name
+
+    expect(page).to have_content(employee1_products.name)
+    expect(page).to have_content(employee1_products.description)
+  end
 end
