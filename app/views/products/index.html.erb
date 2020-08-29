@@ -2,5 +2,8 @@
 <h1>Produtos</h1>
 
 <% @products.each do |product| %>
+  <% if product.image.attached? %>
+    <%= image_tag(product.image) %>
+  <% end %>
   <%= link_to product.name, product %>
 <% end %>

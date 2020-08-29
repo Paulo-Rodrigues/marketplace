@@ -34,6 +34,7 @@ feature 'User view products from the same company employees' do
     expect(page).not_to have_content(employee3_products.name)
     expect(page).to have_content(employee1_products.name)
     expect(page).to have_content(employee2_products.name)
+    expect(page).to have_css('img', count: 2)
   end
 
   scenario 'with details' do
