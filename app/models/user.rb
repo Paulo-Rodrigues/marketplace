@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   before_validation :set_company
 
+  def has_full_profile?
+    name.present? && surname.present? && department.present?
+  end
+
   private
   def set_company
     existent_company = Company.find_by(name: company_name)

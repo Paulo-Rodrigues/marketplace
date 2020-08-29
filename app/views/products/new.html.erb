@@ -1,0 +1,22 @@
+<h1>Cadastre um produto</h1>
+
+<%= form_with(model: @product, local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <% @product.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+  <p>
+    <%= form.label :name, 'Nome' %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'Descrição' %>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.submit 'Enviar'%>
+  </p>
+<% end %>

@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
     it {is_expected.to respond_to(:name)}
     it {is_expected.to respond_to(:surname)}
     it {is_expected.to respond_to(:department)}
+    it {is_expected.to respond_to(:has_full_profile?)}
   end
 
   context 'callbacks' do
@@ -16,5 +17,19 @@ RSpec.describe User, type: :model do
 
   context 'associations' do
     it {is_expected.to have_many(:products).dependent(:destroy)}
+  end
+
+  context 'custom methods' do
+    it '#has_full_profile? (false)' do
+      user = create(:user)
+
+      expect(user.has_full_profile?).to be_falsey
+    end
+
+    it 'has_full_profile? (true)' do
+      user = create(:user_with_profile)
+
+      expect(user.has_full_profile?).to be_truthy
+    end
   end
 end
