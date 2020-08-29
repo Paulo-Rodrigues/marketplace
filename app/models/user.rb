@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def company_name
     email.split('@')[1].split('.')[0].capitalize
   end
+
+  def self.retrieve_company_users(user)
+    where(company: user.company) - where(id: user.id)
+  end
 end

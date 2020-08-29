@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   get 'profile/:id', to: 'users#show', as: :profile
+  get 'users', to: 'users#index'
 
   resources :products, only: [:index, :show, :new, :create]
 

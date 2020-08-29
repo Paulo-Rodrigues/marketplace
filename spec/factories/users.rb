@@ -5,7 +5,7 @@ FactoryBot.define do
     company {Company.create(name: 'Company')}
 
     factory :user_with_profile do
-      name {'Username'}
+      name {"Username#{rand}"}
       surname {'Usersurname'}
       department {'Userdepartment'}
     end
