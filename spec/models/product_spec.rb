@@ -4,6 +4,16 @@ RSpec.describe Product, type: :model do
   context 'respond_to' do
     it {is_expected.to respond_to(:name)}
     it {is_expected.to respond_to(:description)}
+    it {is_expected.to respond_to(:image)}
+  end
+
+  context 'active storage' do
+    it 'with image attached' do
+      product = create(:product)
+      product.image.attach(create_file_blob)
+
+      expect(product.image.present?).to eq(true)
+    end
   end
 
   context 'validations' do

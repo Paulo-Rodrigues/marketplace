@@ -6,6 +6,12 @@
       <p><%= msg %></p>
     <% end %>
   <% end %>
+
+  <p>
+    <%= form.label :image, 'Imagem' %>
+    <%= form.file_field :image %>
+  </p>
+
   <p>
     <%= form.label :name, 'Nome' %>
     <%= form.text_field :name %>

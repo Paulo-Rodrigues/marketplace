@@ -37,6 +37,23 @@ feature 'User register product' do
     expect(page).to have_content('Product description')
   end
 
+  scenario 'successfully with image' do
+    user = create(:user_with_profile); login_as(user)
+    visit root_path
+    
+    click_on 'Anuncie um produto'
+
+    attach_file 'Imagem', Rails.root.join('spec/fixtures/files/image.jpg')
+    fill_in 'Nome', with: 'My Product'
+    fill_in 'Descrição', with: 'Product description'
+
+    click_on 'Enviar'
+
+    expect(page).to have_css("img")
+    expect(page).to have_content('My Product')
+    expect(page).to have_content('Product description')
+  end
+
   scenario 'error messages' do
     user = create(:user_with_profile); login_as(user)
     visit root_path
