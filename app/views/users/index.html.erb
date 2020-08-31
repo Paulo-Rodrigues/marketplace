@@ -1,4 +1,28 @@
+<section class="users_list" %>
+<div class="users_list_header">
+  <h1>Outros colaboradores</h1>
+</div>
+
 <% @users.each do |user| %>
-  <%= link_to 'Info', profile_path(user) %>
-  <%= user.email %>
+<div class="card">
+  <!-- <div class="card&#45;image"> -->
+  <!--   <figure class="image is&#45;4by3"> -->
+  <!--  -->
+  <!--   </figure> -->
+  <!-- </div> -->
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p><%= link_to 'Info', profile_path(user), class: 'title is-4' %></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= user.email %>
+    </div>
+  </div>
+</div>
 <% end %>
+
+</section>
+

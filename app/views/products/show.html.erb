@@ -1,5 +1,19 @@
-<% if @product.image.attached? %>
-  <%= image_tag(@product.image) %>
-<% end %>
-<%= @product.name %>
-<%= @product.description %>
+<section class="product_show" %>
+  <section class="product_show_info">
+    <h1><%= @product.name %></h1>
+    <span>Vendido por: </span>
+    <p><%= @product.description %></p>
+  </section>
+
+ <section class="product_show_image">
+  <% if @product.image.attached? %>
+    <figure class="image is-square">
+      <%= image_tag(@product.image) %>
+    </figure>
+  <% end %>
+ </section>
+
+ <section class="product_show_questions">
+   <h2>Questions</h2>
+ </section>
+</section>

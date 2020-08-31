@@ -44,7 +44,7 @@ feature 'User view products from the same company employees' do
 
     visit products_path
 
-    click_link employee1_products.name
+    click_link employee1_products.name, match: :first
 
     expect(page).to have_content(employee1_products.name)
     expect(page).to have_content(employee1_products.description)

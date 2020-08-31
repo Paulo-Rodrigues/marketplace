@@ -27,4 +27,18 @@ feature 'User view other user profile' do
     expect(page).to have_content(other_user.surname)
     expect(page).to have_content(other_user.department)
   end
+
+  scenario 'with list of user products' do
+    user = create(:user); login_as(user)
+    other_user = create(:user_with_profile, email: 'test2@company.com')
+    p1 = create(:product, user: other_user)
+    p2 = create(:product, user: other_user)
+
+    visit root_path
+    click_on 'Outros colaboradores'
+    click_link 'Info'
+
+    expect(page).to have_content(other_user.products.first.name)
+    expect(page).to have_content(other_user.products.second.name)
+  end
 end

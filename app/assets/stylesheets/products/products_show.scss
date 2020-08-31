@@ -1,0 +1,18 @@
+.product_show {
+  margin: 5% 10% 0 10%;
+  display: grid;
+  grid-template-column: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.product_show_info {
+  grid-column: 1/2;
+}
+
+.product_show_image {
+  grid-column: 2/3;
+}
+
+.product_show_questions {
+  grid-column: 1/3;
+}

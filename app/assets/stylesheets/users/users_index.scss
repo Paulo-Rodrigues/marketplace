@@ -1,0 +1,10 @@
+.users_list {
+    margin: 0 10% 0 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.users_list_header {
+   grid-column: 1/4;
+}

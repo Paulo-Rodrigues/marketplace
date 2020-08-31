@@ -1,8 +1,35 @@
-<h1>Seu Perfil</h1>
-<p>Apenas usuários com o perfil completo podem comprar ou vender</p>
+<section class="profile">
+    <h1>Seu Perfil</h1>
+    <p>Apenas usuários com o perfil completo podem comprar ou vender</p>
+  <section class="profile_info">
+    <div class="card">
+      <div class="card-image">
+        <!-- <figure class="image is&#45;4by3"> -->
+        <!-- </figure> -->
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <%= @user.name %>
+            <%= @user.surname %>
+            <%= @user.department %>
+          </div>
+        </div>
 
-<%= link_to 'Edite seu perfil', edit_user_registration_path %>
+        <div class="content">
+          <%= link_to 'Edite seu perfil', edit_user_registration_path %>
+        </div>
+      </div>
+    </div>
 
-<%= @user.name %>
-<%= @user.surname %>
-<%= @user.department %>
+  </section>
+
+  <section class="profile_user_products">
+    <h1>Lista de produtos</h1>
+    <% @user.products.each do |product| %>
+      <p><%= product.name %></p>
+    <% end %>
+  </section>
+</section>
+
+

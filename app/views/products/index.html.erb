@@ -1,10 +1,29 @@
-<%= link_to 'Anuncie um produto', new_product_path %>
-<%= link_to 'Outros colaboradores', users_path %>
-<h1>Produtos</h1>
+<section class="products_container" %>
+<div class="products_header">
+  <h1>Produtos a venda</h1>
+</div>
 
 <% @products.each do |product| %>
-  <% if product.image.attached? %>
-    <%= image_tag(product.image) %>
-  <% end %>
-  <%= link_to product.name, product %>
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <% if product.image.attached? %>
+        <%= image_tag(product.image) %>
+      <% end %>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p><%= link_to product.name, product, class: 'title is-4' %></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= link_to product.name, product %>
+    </div>
+  </div>
+</div>
 <% end %>
+
+</section>
