@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show, :new, :create]
 
+  get 'search', to: 'search#index', as: :search
+
   root 'homepage#index'
 end

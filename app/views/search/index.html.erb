@@ -1,0 +1,7 @@
+<% if @search_result.none? %>
+  <h2>Produto não encontrado</h2>
+<% end %>
+
+<%= @search_result.each do |result| %>
+  <%= link_to result.name, result %>
+<% end %>
