@@ -14,6 +14,8 @@
  </section>
 
  <section class="product_show_questions">
-   <h2>Questions</h2>
+   <h2>Comentários</h2>
+   <%= render partial: 'comments/form', locals: {commentable: @product} %>
+   <%= render partial: 'comments/comment', collection: @product.comments, as: :commentable %>
  </section>
 </section>

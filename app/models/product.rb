@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :company
   has_one_attached :image
+  has_many :comments, as: :commentable
 
   validates :name, :description, presence: true
 

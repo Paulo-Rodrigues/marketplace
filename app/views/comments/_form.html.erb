@@ -1,0 +1,6 @@
+<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+  <%= form.label :body, 'Deixe seu comentário' %>
+  <%= form.text_area :body %>
+
+  <%= form.submit 'Enviar comentário' %>
+<% end %>

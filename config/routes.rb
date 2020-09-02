@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'users#show', as: :profile
   get 'users', to: 'users#index'
 
-  resources :products, only: [:index, :show, :new, :create]
+  resources :products, only: [:index, :show, :new, :create] do
+    resources :comments,only: [:create],  module: :products
+  end
 
   get 'search', to: 'search#index', as: :search
 
