@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to @commentable, notice: 'Comentário enviado com sucesso'
+    flash[:notice] = 'Comentário enviado com sucesso'
+    redirect_back(fallback_location: root_path)
   end
 
   private

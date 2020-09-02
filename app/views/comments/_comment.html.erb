@@ -1,1 +1,6 @@
 <%= commentable.body %>
+
+<div id="response_form">
+  <%= render partial: 'comments/comments', locals: {commentable: commentable} %>
+  <%= render partial: 'comments/form', locals: {commentable: commentable} %>
+</div>

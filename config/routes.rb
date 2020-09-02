@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :comments,only: [:create],  module: :products
   end
 
+  resources :comments, only: [] do
+    resources :comments, only: [:create], module: :comments
+  end
+
   get 'search', to: 'search#index', as: :search
 
   root 'homepage#index'
