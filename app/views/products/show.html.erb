@@ -3,6 +3,7 @@
     <h1><%= @product.name %></h1>
     <span>Vendido por: </span>
     <p><%= @product.description %></p>
+    <%= link_to 'Comprar', product_orders_path(@product.id), method: :post %>
   </section>
 
  <section class="product_show_image">

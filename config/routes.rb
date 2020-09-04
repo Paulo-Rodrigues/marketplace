@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
 
   resources :products, only: [:index, :show, :new, :create] do
+    resources :orders, only: [:create]
     resources :comments,only: [:create],  module: :products
   end
+
+  resources :orders, only: [:show]
 
   resources :comments, only: [] do
     resources :comments, only: [:create], module: :comments
