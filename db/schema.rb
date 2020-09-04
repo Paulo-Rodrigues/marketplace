@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_013925) do
+ActiveRecord::Schema.define(version: 2020_09_04_125329) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,11 @@ ActiveRecord::Schema.define(version: 2020_09_04_013925) do
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "buyer_id", null: false
+    t.integer "seller_id", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -67,28 +71,6 @@ ActiveRecord::Schema.define(version: 2020_09_04_013925) do
     t.integer "company_id", null: false
     t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["user_id"], name: "index_products_on_user_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.text "body"
-    t.integer "product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_questions_on_product_id"
-    t.index ["user_id"], name: "index_questions_on_user_id"
-  end
-
-  create_table "reply_questions", force: :cascade do |t|
-    t.text "reply"
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_id", null: false
-    t.index ["product_id"], name: "index_reply_questions_on_product_id"
-    t.index ["question_id"], name: "index_reply_questions_on_question_id"
-    t.index ["user_id"], name: "index_reply_questions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,12 +93,9 @@ ActiveRecord::Schema.define(version: 2020_09_04_013925) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users", column: "seller_id"
   add_foreign_key "products", "companies"
   add_foreign_key "products", "users"
-  add_foreign_key "questions", "products"
-  add_foreign_key "questions", "users"
-  add_foreign_key "reply_questions", "products"
-  add_foreign_key "reply_questions", "questions"
-  add_foreign_key "reply_questions", "users"
   add_foreign_key "users", "companies"
 end

@@ -18,7 +18,7 @@ feature 'User initiates a order to buy a product' do
     user = create(:user_with_profile); login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
-    order = Order.create!(product: product)
+    order = Order.create!(product: product, buyer: user, seller: another_user)
 
     visit order_path(order)
 

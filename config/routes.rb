@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :comments,only: [:create],  module: :products
   end
 
-  resources :orders, only: [:show]
+  resources :orders, only: [:index, :show]
 
   resources :comments, only: [] do
     resources :comments, only: [:create], module: :comments
