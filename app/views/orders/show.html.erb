@@ -1,2 +1,7 @@
 <%= @order.product.name %>
 <%= @order.status %>
+
+<% if @order.product.user == current_user %>
+  <%= link_to 'Confirmar venda', confirm_order_path(@order), method: :post %>
+  <%= link_to 'Cancelar venda', cancel_order_path(@order), method: :post %>
+<% end %>

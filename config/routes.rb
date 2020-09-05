@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :comments,only: [:create],  module: :products
   end
 
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show] do
+    member do
+      post 'confirm'
+      post 'cancel'
+    end
+  end
 
   resources :comments, only: [] do
     resources :comments, only: [:create], module: :comments
