@@ -1,0 +1,6 @@
+<%= form_with(model: [order, order.messages.build], local: true) do |form| %>
+  <%= form.label :text, 'Sua mensagem' %>
+  <%= form.text_area :text %>
+
+  <%= form.submit 'Enviar mensagem' %>
+<% end %>

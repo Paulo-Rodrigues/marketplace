@@ -4,3 +4,8 @@
 <% if @order.product.user == current_user %>
   <%= link_to 'Confirmar ou cancelar venda', edit_order_path(@order) %>
 <% end %>
+
+<h2>Mensagens</h2>
+
+<%= render partial: 'messages/messages', locals: {messages: @order.messages} %>
+<%= render partial: 'messages/form', locals: {order: @order} %>

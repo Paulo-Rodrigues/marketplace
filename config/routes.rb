@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:index, :show, :edit, :update] do
+    resources :messages, only: [:create]
     member do
       post 'cancel'
     end
