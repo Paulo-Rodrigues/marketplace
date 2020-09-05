@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications, only: [:index]
+
   resources :comments, only: [] do
     resources :comments, only: [:create], module: :comments
   end

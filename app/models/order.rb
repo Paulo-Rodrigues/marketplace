@@ -6,4 +6,16 @@ class Order < ApplicationRecord
   enum status: {in_progress: 0, canceled: 10, concluded: 20}
 
   scope :user_orders, -> (user) { where(buyer: user) + Order.where(seller: user) }
+
+  after_save :send_notification
+
+  private
+
+  def send_notification
+    Notification.create!(user: self.seller, body: notification_text)
+  end
+
+  def notification_text
+    "Novo pedido em <a href='/orders/#{id}'>pedido</a> "
+  end
 end
