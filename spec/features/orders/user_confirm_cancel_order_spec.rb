@@ -8,7 +8,10 @@ feature 'User confirm or cancel order' do
     order = Order.create!(product: product, seller: user, buyer: another_user)
 
     visit order_path(order)
-    click_link 'Confirmar venda'
+    click_link 'Confirmar ou cancelar venda'
+
+    fill_in 'Preço final', with: 150
+    click_on 'Efetuar venda'
 
     order.reload
 
@@ -17,19 +20,21 @@ feature 'User confirm or cancel order' do
     expect(current_path).to eq(orders_path)
   end
 
-  scenario 'User cancel a sell' do
+  scenario 'User cancel sell' do
     user = create(:user_with_profile); login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: user)
     order = Order.create!(product: product, seller: user, buyer: another_user)
 
     visit order_path(order)
-    click_link 'Cancelar venda'
+    click_link 'Confirmar ou cancelar venda'
+
+    click_on 'Cancelar venda'
 
     order.reload
 
-    expect(page).to have_content('Venda cancelada')
     expect(order.status).to eq('canceled')
+    expect(page).to have_content('Venda cancelada')
     expect(current_path).to eq(orders_path)
   end
 
@@ -42,8 +47,7 @@ feature 'User confirm or cancel order' do
 
     visit order_path(order)
 
-    expect(page).not_to have_link('Confirmar venda')
-    expect(page).not_to have_link('Cancelar venda')
+    expect(page).not_to have_link('Confirmar ou cancelar venda')
   end
 
   scenario 'links to confirm or cancel order(Seller)' do
@@ -54,7 +58,6 @@ feature 'User confirm or cancel order' do
 
     visit order_path(order)
 
-    expect(page).to have_link('Confirmar venda')
-    expect(page).to have_link('Cancelar venda')
+    expect(page).to have_link('Confirmar ou cancelar venda')
   end
 end

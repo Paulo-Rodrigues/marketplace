@@ -1,0 +1,7 @@
+<%= form_with(model: @order, local: true) do |form| %>
+  <%= form.label :final_price, 'Preço final' %>
+  <%= form.number_field :final_price, min: 0 %>
+
+  <%= form.submit 'Efetuar venda' %>
+  <%= form.submit 'Cancelar venda' %>
+<% end %>

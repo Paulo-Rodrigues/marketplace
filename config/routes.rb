@@ -13,9 +13,8 @@ Rails.application.routes.draw do
     resources :comments,only: [:create],  module: :products
   end
 
-  resources :orders, only: [:index, :show] do
+  resources :orders, only: [:index, :show, :edit, :update] do
     member do
-      post 'confirm'
       post 'cancel'
     end
   end

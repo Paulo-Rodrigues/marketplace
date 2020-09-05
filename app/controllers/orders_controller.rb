@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :confirm, :cancel]
+  before_action :set_order, only: [:show, :confirm, :cancel, :edit, :update]
   def index
     @user_orders = Order.user_orders(current_user)
   end
@@ -14,14 +14,18 @@ class OrdersController < ApplicationController
     redirect_to @order, notice: 'Espere o vendedor confirmar sua compra'
   end
 
-  def confirm
-    @order.concluded!
-    redirect_to orders_path, notice: 'Venda confirmada'
+  def edit
   end
 
-  def cancel
-    @order.canceled!
-    redirect_to orders_path, notice: 'Venda cancelada'
+  def update
+    if params[:commit] == 'Efetuar venda'
+      @order.update(status: :concluded, final_price: params[:final_price])
+      flash[:notice] = 'Venda confirmada'
+    elsif params[:commit] == 'Cancelar venda'
+      @order.canceled!
+      flash[:notice] = 'Venda cancelada'
+    end
+    redirect_to orders_path
   end
 
   private
