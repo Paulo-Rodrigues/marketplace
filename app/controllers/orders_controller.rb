@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :confirm, :cancel, :edit, :update]
+  before_action :set_order, only: [:show, :edit, :update]
   def index
     @user_orders = Order.user_orders(current_user)
   end
