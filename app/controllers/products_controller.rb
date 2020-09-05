@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :suspend, :activate]
+
   def index
     @products = Product.available_products(current_user)
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
@@ -23,7 +24,19 @@ class ProductsController < ApplicationController
     end
   end
 
+  def suspend
+    @product.suspended!
+  end
+
+  def activate
+    @product.available!
+  end
+
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :price, :image)

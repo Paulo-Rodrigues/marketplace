@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show, :new, :create] do
     resources :orders, only: [:create]
     resources :comments,only: [:create],  module: :products
+    member do
+      put 'suspend'
+      put 'activate'
+    end
   end
 
   resources :orders, only: [:index, :show, :edit, :update] do

@@ -28,6 +28,11 @@
     <h1>Lista de produtos</h1>
     <% @user.products.each do |product| %>
       <p><%= product.name %></p>
+      <% if product.available? %>
+        <%= link_to 'Suspender venda', suspend_product_path(product), method: :put %>
+      <% else %>
+        <%= link_to 'Ativar venda', activate_product_path(product), method: :put %>
+      <% end %>
     <% end %>
   </section>
 </section>
