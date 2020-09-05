@@ -30,6 +30,7 @@ feature 'User register product' do
 
     fill_in 'Nome', with: 'My Product'
     fill_in 'Descrição', with: 'Product description'
+    fill_in 'Preço', with: 10
 
     click_on 'Enviar'
 
@@ -46,6 +47,7 @@ feature 'User register product' do
     attach_file 'Imagem', Rails.root.join('spec/fixtures/files/image.jpg')
     fill_in 'Nome', with: 'My Product'
     fill_in 'Descrição', with: 'Product description'
+    fill_in 'Preço', with: 10
 
     click_on 'Enviar'
 
@@ -62,9 +64,10 @@ feature 'User register product' do
 
     fill_in 'Nome', with: ''
     fill_in 'Descrição', with: ''
+    fill_in 'Preço', with: ''
 
     click_on 'Enviar'
 
-    expect(page).to have_content('não pode ficar em branco', count: 2 )
+    expect(page).to have_content('não pode ficar em branco', count: 3 )
   end
 end

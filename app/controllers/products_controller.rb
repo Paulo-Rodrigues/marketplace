@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.where(company: current_user.company)
+    @products = Product.available_products(current_user)
   end
 
   def show
@@ -26,6 +26,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :image)
+    params.require(:product).permit(:name, :description, :price, :image)
   end
 end

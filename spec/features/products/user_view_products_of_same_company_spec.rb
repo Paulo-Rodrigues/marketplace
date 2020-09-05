@@ -37,6 +37,23 @@ feature 'User view products from the same company employees' do
     expect(page).to have_css('img', count: 2)
   end
 
+  scenario 'only available products of the same company' do
+    employee1 = create(:user_with_profile)
+    employee2 = create(:user_with_profile, email: 'test2@company.com')
+    employee3 = create(:user_with_profile, email: 'test3@company.com')
+    employee1_products = create(:product, user: employee1)
+    employee2_products = create(:product, user: employee2)
+    employee3_products = create(:product, name: 'Not appear', user: employee3, status: :suspended)
+    user = create(:user, email: 'testuser@company.com'); login_as(user)
+
+    visit products_path
+
+    expect(page).not_to have_content(employee3_products.name)
+    expect(page).to have_content(employee1_products.name)
+    expect(page).to have_content(employee2_products.name)
+    expect(page).to have_css('img', count: 2)
+  end
+
   scenario 'with details' do
     employee1 = create(:user_with_profile)
     employee1_products = create(:product, user: employee1)
