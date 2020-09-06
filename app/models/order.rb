@@ -7,6 +7,8 @@ class Order < ApplicationRecord
 
   scope :user_orders, -> (user) { where(buyer: user) + Order.where(seller: user) }
 
+  before_create :disable_product
+  before_update :alter_product_status
   after_save :send_notification
 
   private
@@ -17,5 +19,15 @@ class Order < ApplicationRecord
 
   def notification_text
     "Novo pedido em <a href='/orders/#{id}'>pedido</a> "
+  end
+
+  def disable_product
+    product.disabled!
+  end
+
+  def alter_product_status
+    if self.status == 'canceled'
+      product.available!
+    end
   end
 end

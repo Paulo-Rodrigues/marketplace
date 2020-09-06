@@ -25,6 +25,7 @@ feature 'User initiates a order to buy a product' do
     expect(current_path).to eq(order_path(order))
     expect(page).to have_content(product.name)
     expect(order.status).to eq("in_progress")
+    expect(product.status).to eq("disabled")
     expect(page).to have_content('in_progress')
   end
 

@@ -16,6 +16,7 @@ feature 'User confirm or cancel order' do
     order.reload
 
     expect(order.status).to eq('concluded')
+    expect(product.status).to eq('disabled')
     expect(page).to have_content('Venda confirmada')
     expect(current_path).to eq(orders_path)
   end
@@ -32,8 +33,10 @@ feature 'User confirm or cancel order' do
     click_on 'Cancelar venda'
 
     order.reload
+    product.reload
 
     expect(order.status).to eq('canceled')
+    expect(product.status).to eq('available')
     expect(page).to have_content('Venda cancelada')
     expect(current_path).to eq(orders_path)
   end
