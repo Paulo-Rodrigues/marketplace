@@ -1,0 +1,36 @@
+<%= form_with(model: @product, local: true) do |form| %>
+  <% if @product.errors.any? %>
+    <% @product.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= form.label :image, 'Imagem' %>
+    <%= form.file_field :image %>
+  </p>
+
+  <p>
+    <%= form.label :name, 'Nome' %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'Descrição' %>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :price, 'Preço' %>
+    <%= form.number_field :price, min: 0 %>
+  </p>
+
+  <p>
+    <%= form.label :category_id, 'Categorias' %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  </p>
+
+  <p>
+    <%= form.submit 'Enviar'%>
+  </p>
+<% end %>

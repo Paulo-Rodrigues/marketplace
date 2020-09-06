@@ -38,6 +38,7 @@ feature 'User register product' do
 
     expect(page).to have_content('My Product')
     expect(page).to have_content('Product description')
+    expect(page).not_to have_link('Comprar')
   end
 
   scenario 'successfully with image' do

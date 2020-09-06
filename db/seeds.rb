@@ -37,7 +37,7 @@ end
 end
 
 
-20.times do |x|
+6.times do |x|
   Product.create!(
     name: "Product#{x}",
     description: "Some description",
@@ -50,7 +50,7 @@ end
   p Product.last.name
 end
 
-10.times do |x|
+3.times do |x|
   Product.create!(
     name: "Product#{x}",
     description: "Some description",

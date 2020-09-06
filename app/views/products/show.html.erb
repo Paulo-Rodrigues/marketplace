@@ -3,7 +3,10 @@
     <h1><%= @product.name %></h1>
     <span>Vendido por: </span>
     <p><%= @product.description %></p>
-    <%= link_to 'Comprar', product_orders_path(@product.id), method: :post %>
+    <%= link_to 'Comprar', product_orders_path(@product.id), method: :post unless @product.user == current_user %>
+    <% if @product.user == current_user %>
+      <%= link_to 'Editar produto', edit_product_path(@product) %>
+    <% end %>
   </section>
 
  <section class="product_show_image">

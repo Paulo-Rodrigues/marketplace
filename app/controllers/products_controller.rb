@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :suspend, :activate]
+  before_action :set_product, only: [:show, :suspend, :activate, :edit, :update]
 
   def index
     @products = Product.available_products(current_user)
@@ -19,6 +19,18 @@ class ProductsController < ApplicationController
 
     if current_user.has_full_profile? && @product.save
       redirect_to @product
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to @product, notice: 'Produto editado com sucesso'
     else
       render 'new'
     end
