@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
   belongs_to :company
+  belongs_to :category
   has_one_attached :image
   has_many :comments, as: :commentable
 

@@ -28,6 +28,11 @@
   </p>
 
   <p>
+    <%= form.label :category_id, 'Categorias' %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  </p>
+
+  <p>
     <%= form.submit 'Enviar'%>
   </p>
 <% end %>

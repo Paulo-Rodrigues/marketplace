@@ -24,6 +24,7 @@ feature 'User register product' do
 
   scenario 'successfully' do
     user = create(:user_with_profile); login_as(user)
+    category = create(:category)
     visit root_path
     
     click_on 'Anuncie um produto'
@@ -31,6 +32,7 @@ feature 'User register product' do
     fill_in 'Nome', with: 'My Product'
     fill_in 'Descrição', with: 'Product description'
     fill_in 'Preço', with: 10
+    select 'Categoria A', from: 'Categorias'
 
     click_on 'Enviar'
 
@@ -40,6 +42,7 @@ feature 'User register product' do
 
   scenario 'successfully with image' do
     user = create(:user_with_profile); login_as(user)
+    category = create(:category)
     visit root_path
     
     click_on 'Anuncie um produto'
@@ -48,6 +51,7 @@ feature 'User register product' do
     fill_in 'Nome', with: 'My Product'
     fill_in 'Descrição', with: 'Product description'
     fill_in 'Preço', with: 10
+    select 'Categoria A', from: 'Categorias'
 
     click_on 'Enviar'
 

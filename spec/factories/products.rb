@@ -3,6 +3,7 @@ FactoryBot.define do
     name { "Product" }
     description { "Product description" }
     user 
+    category {Category.new(name: 'Eletrônicos')}
     status {'available'}
     price {100.00}
     company {user.company}
