@@ -1,7 +1,7 @@
 <section class="product_show" %>
   <section class="product_show_info">
     <h1><%= @product.name %></h1>
-    <span>Vendido por: </span>
+    <span>Vendido por: <%= link_to @product.user.name, profile_path(@product.user) %> </span>
     <p><%= @product.description %></p>
     <%= link_to 'Comprar', product_orders_path(@product.id), method: :post unless @product.user == current_user %>
     <% if @product.user == current_user %>
@@ -16,6 +16,8 @@
     </figure>
   <% end %>
  </section>
+
+ <%= link_to 'Voltar', root_path %>
 
  <section class="product_show_questions">
    <h2>Comentários</h2>
