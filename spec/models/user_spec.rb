@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
     it {is_expected.to respond_to(:surname)}
     it {is_expected.to respond_to(:department)}
     it {is_expected.to respond_to(:has_full_profile?)}
+    it {is_expected.to respond_to(:avatar)}
   end
 
   context 'callbacks' do

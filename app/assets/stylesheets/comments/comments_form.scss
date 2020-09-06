@@ -1,0 +1,41 @@
+.comments_form {
+  input {
+    margin: 10px;
+  }
+}
+
+.comments {
+  background-color: rgba(85, 85, 85, 0.5);
+}
+
+.comment_body {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px; 
+  min-height: 100px;
+
+  .commenter {
+    align-self: flex-end;
+  }
+}
+
+#response_form { 
+  margin-left: 50px;
+  margin-right: 50px;
+
+  .response_body {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    background-color: #6e6e6e3b; 
+
+    .commenter {
+      align-self: flex-end;
+    }
+  }
+}

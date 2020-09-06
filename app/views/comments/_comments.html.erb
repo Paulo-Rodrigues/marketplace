@@ -1,3 +1,4 @@
 <% commentable.comments.each do |comment| %>
-  <%= comment.body %>
+  <p><%= comment.body %></p><p class='commenter'><%= commentable.user.name %></p>
+  <hr>
 <% end %>

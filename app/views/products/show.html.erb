@@ -22,6 +22,7 @@
  <section class="product_show_questions">
    <h2>Comentários</h2>
    <%= render partial: 'comments/form', locals: {commentable: @product} %>
+   <hr>
    <%= render partial: 'comments/comment', collection: @product.comments, as: :commentable %>
  </section>
 </section>

@@ -1,8 +1,13 @@
 <section class="comments">
-  <%= commentable.body %>
+  <div class='comment_body' %>
+    <p><%= commentable.body %></p>
+    <p class='commenter'> <%= commentable.user.name %></p>
+  </div>
 
   <div id="response_form">
-    <%= render partial: 'comments/comments', locals: {commentable: commentable} %>
+    <div class='response_body'>
+      <%= render partial: 'comments/comments', locals: {commentable: commentable} %>
+    </div>
     <%= render partial: 'comments/form', locals: {commentable: commentable} %>
   </div>
 </section>

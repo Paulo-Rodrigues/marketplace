@@ -1,6 +1,8 @@
-<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
-  <%= form.label :body, 'Deixe seu comentário' %>
-  <%= form.text_area :body %>
+<section class="comments_form">
+  <%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+    <%= form.label :body, 'Deixe seu comentário' %>
+    <%= form.text_area :body, class: 'textarea is-small' %>
 
-  <%= form.submit 'Enviar comentário' %>
-<% end %>
+    <%= form.submit 'Enviar comentário', class: 'button is-primary is-rounded' %>
+  <% end %>
+</section>

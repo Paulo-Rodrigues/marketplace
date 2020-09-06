@@ -1,0 +1,16 @@
+.search_form {
+  grid-column: 1 / 3;
+  form {
+    display: flex;
+    align-items: space-between;
+
+    .label {
+      margin-right: 5px;
+    }
+
+    .button {
+      margin-left: 5px;
+    }
+  }
+}
+

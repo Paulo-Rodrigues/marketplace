@@ -38,10 +38,12 @@ class ProductsController < ApplicationController
 
   def suspend
     @product.suspended!
+    redirect_back(fallback_location: root_path)
   end
 
   def activate
     @product.available!
+    redirect_back(fallback_location: root_path)
   end
 
   private

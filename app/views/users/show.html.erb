@@ -1,18 +1,20 @@
 <section class="profile">
-    <h1>Seu Perfil</h1>
-    <p>Apenas usuários com o perfil completo podem comprar ou vender</p>
   <section class="profile_info">
+
+    <% if @user.avatar.attached? %>
+     <figure class="image avatar_image">
+      <%= image_tag(@user.avatar) %>
+     </figure>
+    <% end %>
+
     <div class="card">
-      <div class="card-image">
-        <!-- <figure class="image is&#45;4by3"> -->
-        <!-- </figure> -->
-      </div>
+
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <%= @user.name %>
-            <%= @user.surname %>
-            <%= @user.department %>
+            <h1><%= @user.name %></h1>
+            <p><%= @user.surname %></p>
+            <p><%= @user.department %></p>
           </div>
         </div>
 
@@ -21,18 +23,21 @@
         </div>
       </div>
     </div>
+    <p>Apenas usuários com o perfil completo podem comprar ou vender</p>
 
   </section>
 
   <section class="profile_user_products">
     <h1>Lista de produtos</h1>
     <% @user.products.each do |product| %>
-      <p><%= product.name %></p>
+     <div class='profile_product'>
+      <h2><%= product.name %></h2>
       <% if product.available? %>
         <%= link_to 'Suspender venda', suspend_product_path(product), method: :put %>
       <% else %>
         <%= link_to 'Ativar venda', activate_product_path(product), method: :put %>
       <% end %>
+     </div>
     <% end %>
   </section>
 </section>

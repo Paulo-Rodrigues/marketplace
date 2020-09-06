@@ -9,8 +9,8 @@ feature 'User redirected to profile on registering' do
     fill_in 'Confirme sua senha', with: 'password'
     click_on 'Registrar'
 
-    expect(page).to have_content('Seu Perfil')
     expect(page).to have_link('Edite seu perfil')
+    expect(current_path).to eq(profile_path(1))
   end
 
   scenario 'edit user info' do

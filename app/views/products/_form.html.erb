@@ -7,30 +7,30 @@
 
   <p>
     <%= form.label :image, 'Imagem' %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class: 'input' %>
   </p>
 
   <p>
     <%= form.label :name, 'Nome' %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'input' %>
   </p>
 
   <p>
     <%= form.label :description, 'Descrição' %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description , class: 'input'%>
   </p>
 
   <p>
     <%= form.label :price, 'Preço' %>
-    <%= form.number_field :price, min: 0 %>
+    <%= form.number_field :price, min: 0, class: 'input' %>
   </p>
 
   <p>
     <%= form.label :category_id, 'Categorias' %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name,{}, {class: 'select'}) %>
   </p>
 
   <p>
-    <%= form.submit 'Enviar'%>
+    <%= form.submit 'Enviar', class: 'button is-primary'%>
   </p>
 <% end %>

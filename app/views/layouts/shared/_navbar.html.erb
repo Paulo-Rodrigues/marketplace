@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <%= link_to 'MARKETPLACE', root_path, class: "navbar-item" %>
     
@@ -23,11 +23,16 @@
       <div class="navbar-dropdown">
         <% if current_user %>
           <%= link_to 'Perfil', profile_path(current_user), class: "navbar-item" %>
+          <hr>
           <%= link_to 'Produtos', products_path , class: "navbar-item" %>
+          <hr>
           <%= link_to 'Anuncie um produto', new_product_path, class: "navbar-item" %>
+          <hr>
           <%= link_to 'Outros colaboradores', users_path, class: "navbar-item" %>
-          <%= link_to "Notificações #{current_user.notifications.count}", notifications_path %>
-          <%= link_to 'Minhas compras e vendas', orders_path %>
+          <hr>
+          <%= link_to "Notificações #{current_user.notifications.count}", notifications_path, class: 'navbar-item' %>
+          <hr>
+          <%= link_to 'Minhas compras e vendas', orders_path, class: 'navbar-item' %>
         <% end %>
       </div>
     </div>
