@@ -1,5 +1,7 @@
-<h1>Suas notificações</h1>
+<section class="notifications">
+  <h1>Suas notificações</h1>
 
-<% @notifications.each do |notification| %>
-  <%= notification.body.html_safe %>
-<% end %>
+  <% @notifications.each do |notification| %>
+    <p><%= notification.body.html_safe %></p>
+  <% end %>
+</section>

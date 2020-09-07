@@ -1,0 +1,19 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orders-info {
+  background-color: #fff;
+  padding: 20px;
+  margin: 2rem 0 2rem 0;
+}
+
+.message_body {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  margin: 2rem 0 2rem 0;
+}

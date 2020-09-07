@@ -1,11 +1,22 @@
-<%= @order.product.name %>
-<%= @order.status %>
+<section class="orders">
+  <div class="orders-info">
+    <h1><%= @order.product.name %></h1>
+    <p class=" button is-small is-warning"><%= @order.status %></p>
+    <hr>
+    <p>vendedor: <%= @order.seller.name %></p>
+    <p>comprador: <%= @order.buyer.name %></p>
 
-<% if @order.product.user == current_user %>
-  <%= link_to 'Confirmar ou cancelar venda', edit_order_path(@order) %>
-<% end %>
+    <% if @order.product.user == current_user%>
+      <p><%= link_to 'Confirmar ou cancelar venda', edit_order_path(@order) unless @order.concluded? %></p>
+    <% end %>
+  </div>
 
-<h2>Mensagens</h2>
+  <%= link_to 'Voltar', orders_path %>
 
-<%= render partial: 'messages/messages', locals: {messages: @order.messages} %>
-<%= render partial: 'messages/form', locals: {order: @order} %>
+  <div class="orders-messages">
+    <h2>Mensagens</h2>
+
+    <%= render partial: 'messages/messages', locals: {messages: @order.messages} %>
+    <%= render partial: 'messages/form', locals: {order: @order} unless @order.concluded? %>
+  </div>
+</section>

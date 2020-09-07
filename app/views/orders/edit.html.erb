@@ -1,7 +1,10 @@
-<%= form_with(model: @order, local: true) do |form| %>
-  <%= form.label :final_price, 'Preço final' %>
-  <%= form.number_field :final_price, min: 0 %>
+<section class='orders'>
+  <%= form_with(model: @order, local: true) do |form| %>
+    <%= form.label :final_price, 'Preço final' %>
+    <%= form.number_field :final_price, min: 0, class: 'input' %>
 
-  <%= form.submit 'Efetuar venda' %>
-  <%= form.submit 'Cancelar venda' %>
-<% end %>
+    <hr>
+    <%= form.submit 'Efetuar venda', class: 'button is-small is-primary is-rounded' %>
+    <%= form.submit 'Cancelar venda', class: 'button is-small is-danger is-rounded' %>
+  <% end %>
+</section>

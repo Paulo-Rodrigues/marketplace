@@ -1,6 +1,7 @@
 <section class="product_show" %>
   <section class="product_show_info">
     <h1><%= @product.name %></h1>
+    <p><%= number_to_currency @product.price %></p>
     <span>Vendido por: <%= link_to @product.user.name, profile_path(@product.user) %> </span>
     <p><%= @product.description %></p>
     <%= link_to 'Comprar', product_orders_path(@product.id), method: :post unless @product.user == current_user %>

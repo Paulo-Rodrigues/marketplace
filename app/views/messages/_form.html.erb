@@ -1,6 +1,6 @@
 <%= form_with(model: [order, order.messages.build], local: true) do |form| %>
   <%= form.label :text, 'Sua mensagem' %>
-  <%= form.text_area :text %>
+  <%= form.text_area :text, class: 'input is-large' %>
 
-  <%= form.submit 'Enviar mensagem' %>
+  <%= form.submit 'Enviar mensagem', class: 'button is-primary is-rounded' %>
 <% end %>

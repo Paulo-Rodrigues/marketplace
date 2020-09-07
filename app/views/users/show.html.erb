@@ -35,7 +35,7 @@
       <% if product.available? %>
         <%= link_to 'Suspender venda', suspend_product_path(product), method: :put %>
       <% else %>
-        <%= link_to 'Ativar venda', activate_product_path(product), method: :put %>
+        <%= link_to 'Ativar venda', activate_product_path(product), method: :put unless product.disabled?%>
       <% end %>
      </div>
     <% end %>

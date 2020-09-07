@@ -1,3 +1,10 @@
-<% @user_orders.each do |order| %>
-  <%= link_to order.product.name, order %>
-<% end %>
+<section class="orders">
+  <h1>Vendas e compras</h1>
+  <div class="orders-info">
+    <% @user_orders.each do |order| %>
+      <p><%= link_to order.product.name, order %></p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Voltar', root_path %>
+</section>
