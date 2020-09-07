@@ -12,6 +12,17 @@ feature 'Search Categories' do
     expect(page).to have_link(categories[2].name)
   end
 
+  scenario 'links' do
+    user = create(:user); login_as(user)
+    another_user = create(:user_with_profile, email: 'other@company.com')
+    categories = create_list(:categories, 3)
+    visit root_path
+
+    click_link categories[0].name
+
+    expect(page).to have_content('Nenhum resultado para essa categoria')
+  end
+
   scenario 'index of categories' do
     user = create(:user); login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')

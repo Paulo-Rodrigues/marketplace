@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
   def show
-    @products = Product.where(category_id: params[:id])
+    @products = Product.search_category(params[:id]).available
   end
 end

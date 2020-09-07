@@ -6,6 +6,10 @@
   <h1>Produtos a venda</h1>
 </div>
 
+<% if @products.none? %>
+  <p>Nenhum produto cadastrado no momento</p>
+<% end %>
+
 <% @products.each do |product| %>
 <div class="card">
   <div class="card-image">

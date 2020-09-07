@@ -3,6 +3,7 @@
   <div class="orders-info">
     <% @user_orders.each do |order| %>
       <p><%= link_to order.product.name, order %></p>
+      <p><%= order.status %></p>
     <% end %>
   </div>
 

@@ -7,6 +7,14 @@ feature 'User view products from the same company employees' do
     expect(current_path).to eq(new_user_session_path)
   end
 
+  scenario 'no products' do
+    user = create(:user); login_as(user)
+
+    visit products_path
+
+    expect(page).to have_content('Nenhum produto cadastrado no momento')
+  end
+
   scenario 'list of products of same company' do
     employee1 = create(:user_with_profile)
     employee2 = create(:user_with_profile, email: 'test2@company.com')

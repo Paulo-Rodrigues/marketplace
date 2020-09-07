@@ -16,4 +16,8 @@ class Product < ApplicationRecord
   def self.search(product_name)
     where('name like ?', "%#{product_name}%")
   end
+
+  def self.search_category(category_id)
+    where(category_id: category_id)
+  end
 end
