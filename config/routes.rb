@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'users#show', as: :profile
   get 'users', to: 'users#index'
 
+  resources :categories, only: [:show]
+
   resources :products, only: [:index, :show, :new, :create, :edit, :update] do
     resources :orders, only: [:create]
     resources :comments,only: [:create],  module: :products

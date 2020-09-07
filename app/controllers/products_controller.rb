@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.available_products(current_user)
+    @categories = Category.all
   end
 
   def show

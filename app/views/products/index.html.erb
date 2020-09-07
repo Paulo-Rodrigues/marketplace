@@ -30,3 +30,10 @@
 <% end %>
 
 </section>
+
+<section class="categories">
+  <h2>Categorias</h2>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category %>
+  <% end %>
+</section>
