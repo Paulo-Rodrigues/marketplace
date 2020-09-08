@@ -78,6 +78,20 @@ feature 'User wishlist' do
     expect(page).to have_content(product.name)
   end
 
+  scenario 'remove products index' do
+    user = create(:user_with_profile); login_as(user)
+    another_user = create(:user_with_profile, email: 'another@company.com')
+    product = create(:product, user: another_user)
+    Favorite.create!(user: user, product: product)
+
+    visit root_path
+
+    click_link 'Lista de desejos'
+    click_link 'Remover'
+
+    expect(user.favorites.count).to eq(0)
+  end
+
   scenario 'go to product details' do
     user = create(:user_with_profile); login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')

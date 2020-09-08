@@ -1,3 +1,4 @@
 <% @favorites.each do |favorite| %>
-  <%= link_to favorite.product.name, product_path(favorite.product) %>
+  <%= link_to favorite.product.name, product_path(favorite.product) %> | 
+  <%= link_to 'Remover', favorite_path(favorite.product.id), method: :delete %>
 <% end %>
