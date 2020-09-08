@@ -33,6 +33,8 @@
           <%= link_to "Notificações #{current_user.notifications.count}", notifications_path, class: 'navbar-item' %>
           <hr>
           <%= link_to 'Minhas compras e vendas', orders_path, class: 'navbar-item' %>
+          <hr>
+          <%= link_to 'Lista de desejos', favorites_path %>
         <% end %>
       </div>
     </div>

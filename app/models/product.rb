@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   belongs_to :category
   has_one_attached :image
   has_many :comments, as: :commentable
+  has_many :favorites
+  has_many :users, through: :favorites
 
   validates :name, :description, :price, presence: true
 

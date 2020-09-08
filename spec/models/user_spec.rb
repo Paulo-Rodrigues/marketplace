@@ -21,6 +21,8 @@ RSpec.describe User, type: :model do
     it {is_expected.to have_many(:comments).dependent(:destroy)}
     it {is_expected.to have_many(:messages).dependent(:destroy)}
     it {is_expected.to have_many(:notifications).dependent(:destroy)}
+    it {is_expected.to have_many(:favorites)}
+    # it {is_expected.to have_many(:products).through(:favorites)}
   end
 
   context 'custom methods' do

@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one_attached :avatar
+  has_many :favorites
+  # has_many :products, through: :favorites
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,6 +16,10 @@ class User < ApplicationRecord
 
   def has_full_profile?
     name.present? && surname.present? && department.present?
+  end
+
+  def favorite?(product)
+    Favorite.where(user: self, product: product).exists?
   end
 
   private
@@ -29,4 +35,5 @@ class User < ApplicationRecord
   def self.retrieve_company_users(user)
     where(company: user.company) - where(id: user.id)
   end
+
 end

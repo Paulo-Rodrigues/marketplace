@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :favorites, only: [:index, :create, :destroy]
+
   resources :orders, only: [:index, :show, :edit, :update] do
     resources :messages, only: [:create]
     member do
