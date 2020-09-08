@@ -14,6 +14,16 @@ feature 'User wishlist' do
     expect(page).not_to have_link('Favorite')
   end
 
+  scenario 'links (only other users)' do
+    user = create(:user_with_profile); login_as(user)
+    product = create(:product, user: user)
+
+    visit root_path
+
+    expect(page).not_to have_link('Desfavorite')
+    expect(page).not_to have_link('Favorite')
+  end
+
   scenario 'links (desfavorite)' do
     user = create(:user_with_profile); login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')

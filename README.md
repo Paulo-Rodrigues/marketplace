@@ -14,3 +14,6 @@ Project developed as part of Treinadev program by Campus code.
 * shoulda-matchers - for a convenient way to test models
 
 * faker - for fake data
+
+> clone the repo, cd into it, run bundle install > rails db:migrate > rails db:seed
+this will setup some fake data
