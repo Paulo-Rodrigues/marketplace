@@ -25,7 +25,7 @@ feature 'User report a product' do
     expect(page).to have_content('Denúncia enviada')
   end
 
-  scenario 'link to report' do
+  scenario 'link to report not showed' do
     user = create(:user_with_profile); login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)

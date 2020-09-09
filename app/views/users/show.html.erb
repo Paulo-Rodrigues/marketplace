@@ -25,6 +25,10 @@
     </div>
     <p>Apenas usuários com o perfil completo podem comprar ou vender</p>
 
+    <% unless current_user.reported?(@user) %>
+      <%= link_to 'denunciar usuário', new_user_report_path(@user) unless @user == current_user %>
+    <% end %>
+
   </section>
 
   <section class="profile_user_products">

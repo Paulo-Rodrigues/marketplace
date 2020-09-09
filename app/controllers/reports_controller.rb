@@ -1,6 +1,5 @@
 class ReportsController < ApplicationController
   def new
-    @reportable = Product.find(params[:product_id])
   end
 
   def create

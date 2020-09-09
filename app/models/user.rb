@@ -19,6 +19,10 @@ class User < ApplicationRecord
     name.present? && surname.present? && department.present?
   end
 
+  def reported?(user)
+    Report.where(reportable: user, user: self).exists?
+  end
+
   def favorite?(product)
     Favorite.where(user: self, product: product).exists?
   end
