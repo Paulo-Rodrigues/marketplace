@@ -13,6 +13,8 @@
     <% if @product.user == current_user %>
       <%= link_to 'Editar produto', edit_product_path(@product) %>
     <% end %>
+
+    <%= link_to 'Denunciar este anúncio', new_product_report_path(@product) unless @product.user == current_user %>
   </section>
 
  <section class="product_show_image">

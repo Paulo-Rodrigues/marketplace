@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_one_attached :avatar
   has_many :favorites
+  has_many :reports, dependent: :destroy
   # has_many :products, through: :favorites
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

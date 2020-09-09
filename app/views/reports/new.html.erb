@@ -1,0 +1,6 @@
+<%= form_with(model: [@reportable, Report.new], local: true) do |form| %>
+  <%= form.label :reason, 'Motivo' %>
+  <%= form.text_area :reason %>
+
+  <%= form.submit 'Enviar' %>
+<% end %>

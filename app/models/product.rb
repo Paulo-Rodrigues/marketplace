@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :favorites
   has_many :users, through: :favorites
+  has_many :reports, as: :reportable
 
   validates :name, :description, :price, presence: true
 
