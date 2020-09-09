@@ -19,6 +19,7 @@ feature 'User confirm or cancel order' do
     expect(product.status).to eq('disabled')
     expect(page).to have_content('Venda confirmada')
     expect(current_path).to eq(orders_path)
+    expect(page).to have_content(order.final_price)
   end
 
   scenario 'User cancel sell' do

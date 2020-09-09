@@ -4,6 +4,11 @@
     <p><%= number_to_currency @product.price %></p>
     <span>Vendido por: <%= link_to @product.user.name, profile_path(@product.user) %> </span>
     <p><%= @product.description %></p>
+
+    <% if current_user.favorite?(@product) %>
+      <p>favorito</p>
+    <% end %>
+
     <%= link_to 'Comprar', product_orders_path(@product.id), method: :post unless @product.user == current_user %>
     <% if @product.user == current_user %>
       <%= link_to 'Editar produto', edit_product_path(@product) %>

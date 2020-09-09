@@ -12,6 +12,7 @@ feature 'User wishlist' do
 
     expect(page).to have_link('Desfavorite')
     expect(page).not_to have_link('Favorite')
+    expect(page).to have_content('favorito')
   end
 
   scenario 'links (only other users)' do
@@ -105,6 +106,7 @@ feature 'User wishlist' do
     click_on product.name
 
     expect(page).to have_content(product.name)
+    expect(page).to have_content('favorito')
     expect(current_path).to eq(product_path(product))
   end
 end
