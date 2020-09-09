@@ -23,6 +23,10 @@ class User < ApplicationRecord
     Favorite.where(user: self, product: product).exists?
   end
 
+  def reported?(product)
+    Report.where(user: self, reportable: product).exists?
+  end
+
   private
   def set_company
     existent_company = Company.find_by(name: company_name)

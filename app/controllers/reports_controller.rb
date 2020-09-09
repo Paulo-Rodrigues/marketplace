@@ -4,8 +4,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-    product = Product.find(params[:product_id])
-    current_user.reports.create!(reason: params[:reason], reportable: product)
+    current_user.reports.create!(reason: params[:reason], reportable: @reportable)
 
     redirect_to root_path, notice: 'Denúncia enviada'
   end

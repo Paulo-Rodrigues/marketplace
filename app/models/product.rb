@@ -12,6 +12,12 @@ class Product < ApplicationRecord
 
   enum status: {available: 0, suspended: 10, disabled: 20}
 
+  after_find :suspended_by_reports
+
+  def suspended_by_reports
+    suspended! if reports.count >= 3
+  end
+
   def self.available_products(user)
     where(company: user.company).available
   end
