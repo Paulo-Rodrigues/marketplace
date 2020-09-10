@@ -19,7 +19,7 @@
         </div>
 
         <div class="content">
-          <%= link_to 'Edite seu perfil', edit_user_registration_path %>
+          <%= link_to 'Edite seu perfil', edit_user_registration_path if current_user == @user %>
         </div>
       </div>
     </div>
