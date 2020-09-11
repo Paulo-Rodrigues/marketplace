@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root to: 'admin#index'
+  end
+
   devise_for :users, controllers: {registrations: 'registrations'}
 
   authenticated :user do
