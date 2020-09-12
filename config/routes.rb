@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :reports, only: [:index]
+    resources :reports, only: [:index, :show]
     root to: 'admin#index'
   end
 
