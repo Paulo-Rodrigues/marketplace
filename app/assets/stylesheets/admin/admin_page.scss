@@ -1,0 +1,10 @@
+.admin_container {
+  height: 100%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(150px, 20%) 1fr;
+}
+
+.admin_menu {
+  grid-column: 1 / 2;
+}

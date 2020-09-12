@@ -7,6 +7,6 @@ feature 'Admin root' do
 
     visit admin_root_path
 
-    expect(page).to have_content('admin page')
+    expect(page).to have_content('Admin Page')
   end
 end
