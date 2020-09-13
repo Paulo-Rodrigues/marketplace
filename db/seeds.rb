@@ -1,5 +1,7 @@
 p 'seeding'
 
+Admin.create!(email: 'admin@email.com', password: 'password')
+
 User.create!(
   name: Faker::Name.first_name,
   surname: Faker::Name.last_name,
