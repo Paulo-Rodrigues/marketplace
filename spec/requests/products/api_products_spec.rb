@@ -22,4 +22,22 @@ describe 'Products api' do
       expect(response.body).not_to include(product.name)
     end
   end
+
+  context 'show' do
+    it 'product details' do
+      product = create(:product)
+
+      get "/api/v1/products/#{product.id}"
+
+      puts response.body
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body). to include(product.name)
+      expect(response.body). to include(product.status)
+      expect(response.body). to include(product.price.to_s)
+      expect(response.body). to include(product.description)
+      expect(response.body). to include(product.user_id.to_s)
+      expect(response.body). to include(product.user.email)
+    end
+  end
 end
