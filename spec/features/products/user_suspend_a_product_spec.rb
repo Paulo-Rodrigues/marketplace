@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User suspend a product' do
   scenario 'suspended from profile page' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     product = create(:product, user: user)
 
     visit profile_path(user)
@@ -13,7 +14,8 @@ feature 'User suspend a product' do
   end
 
   scenario 'makes available again from profile page' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     product = create(:product, user: user, status: :suspended)
 
     visit profile_path(user)

@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update]
+  before_action :set_order, only: %i[show edit update]
   def index
     @user_orders = Order.user_orders(current_user)
   end
 
-  def show
-  end
+  def show; end
 
   def create
     product = Product.find(params[:product_id])
@@ -14,14 +13,14 @@ class OrdersController < ApplicationController
     redirect_to @order, notice: 'Espere o vendedor confirmar sua compra'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    if params[:commit] == 'Efetuar venda'
+    case params[:commit]
+    when 'Efetuar venda'
       @order.update(status: :concluded, final_price: params[:final_price])
       flash[:notice] = 'Venda confirmada'
-    elsif params[:commit] == 'Cancelar venda'
+    when 'Cancelar venda'
       @order.canceled!
       flash[:notice] = 'Venda cancelada'
     end
@@ -33,5 +32,4 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
-
 end

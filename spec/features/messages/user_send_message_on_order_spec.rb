@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User send message on order' do
   scenario 'send message' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     order = Order.create!(product: product, buyer: user, seller: another_user)
@@ -16,7 +17,8 @@ feature 'User send message on order' do
   end
 
   scenario 'view message' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     order = Order.create!(product: product, buyer: user, seller: another_user)
@@ -28,7 +30,8 @@ feature 'User send message on order' do
   end
 
   scenario 'view message(another user)' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     order = Order.create!(product: product, buyer: user, seller: another_user)

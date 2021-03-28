@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product do
-    name { "Product" }
-    description { "Product description" }
-    user 
+    name { 'Product' }
+    description { 'Product description' }
+    user
     category {Category.new(name: 'Eletrônicos')}
     status {'available'}
     price {100.00}

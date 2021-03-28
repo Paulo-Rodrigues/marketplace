@@ -2,10 +2,11 @@ require 'rails_helper'
 
 feature 'User receives a notification when new order came' do
   scenario 'notifications index' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company')
     product = create(:product, user: user)
-    order = Order.create!(product: product, seller: user, buyer: another_user, final_price: 120, status: :concluded)
+    Order.create!(product: product, seller: user, buyer: another_user, final_price: 120, status: :concluded)
 
     visit root_path
 
@@ -18,7 +19,8 @@ feature 'User receives a notification when new order came' do
   end
 
   scenario 'view order page' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company')
     product = create(:product, user: user)
     order = Order.create!(product: product, seller: user, buyer: another_user, final_price: 120, status: :concluded)
@@ -33,13 +35,14 @@ feature 'User receives a notification when new order came' do
   end
 
   scenario 'notifications number' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company')
     product = create(:product, user: user)
-    order = Order.create!(product: product, seller: user, buyer: another_user, final_price: 120, status: :concluded)
+    Order.create!(product: product, seller: user, buyer: another_user, final_price: 120, status: :concluded)
 
     visit root_path
 
-    expect(page).to have_link("Notificações 1")
+    expect(page).to have_link('Notificações 1')
   end
 end

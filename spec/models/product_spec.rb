@@ -6,8 +6,10 @@ RSpec.describe Product, type: :model do
     it {is_expected.to respond_to(:description)}
     it {is_expected.to respond_to(:image)}
     it {is_expected.to respond_to(:price)}
-    it {is_expected.to define_enum_for(:status)
-                       .with_values(available: 0, suspended: 10, disabled: 20)}
+    it {
+      is_expected.to define_enum_for(:status)
+        .with_values(available: 0, suspended: 10, disabled: 20)
+    }
   end
 
   context 'active storage' do

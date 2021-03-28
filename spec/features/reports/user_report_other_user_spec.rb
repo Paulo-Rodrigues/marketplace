@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User report other user' do
   scenario 'link to report' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')
 
     visit profile_path(another_user)
@@ -11,7 +12,8 @@ feature 'User report other user' do
   end
 
   scenario 'user report other user' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')
 
     visit profile_path(another_user)
@@ -24,7 +26,8 @@ feature 'User report other user' do
   end
 
   scenario 'link not show if user previously reportd other user' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')
 
     visit profile_path(another_user)

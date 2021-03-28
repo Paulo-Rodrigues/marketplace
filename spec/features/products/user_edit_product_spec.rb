@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User edit a product' do
   scenario 'successfully' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     product = create(:product, user: user)
 
     visit product_path(product)

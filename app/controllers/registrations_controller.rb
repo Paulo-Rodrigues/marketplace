@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:update]
-  
+
   protected
 
   def after_sign_up_path_for(user)
@@ -12,6 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :department, :avatar, :password, :email ])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name surname department avatar password email])
   end
 end

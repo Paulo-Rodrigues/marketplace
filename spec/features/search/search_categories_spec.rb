@@ -2,8 +2,9 @@ require 'rails_helper'
 
 feature 'Search Categories' do
   scenario 'links' do
-    user = create(:user); login_as(user)
-    another_user = create(:user_with_profile, email: 'other@company.com')
+    user = create(:user)
+    login_as(user)
+    create(:user_with_profile, email: 'other@company.com')
     categories = create_list(:categories, 3)
     visit root_path
 
@@ -13,8 +14,9 @@ feature 'Search Categories' do
   end
 
   scenario 'links' do
-    user = create(:user); login_as(user)
-    another_user = create(:user_with_profile, email: 'other@company.com')
+    user = create(:user)
+    login_as(user)
+    create(:user_with_profile, email: 'other@company.com')
     categories = create_list(:categories, 3)
     visit root_path
 
@@ -24,12 +26,13 @@ feature 'Search Categories' do
   end
 
   scenario 'index of categories' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')
     category = create(:category)
     another_category = create(:category, name: 'Category B')
-    product = create(:product, user: another_user, category:  category)
-    another_product = create(:product,name: 'another', user: another_user, category:  another_category)
+    product = create(:product, user: another_user, category: category)
+    another_product = create(:product, name: 'another', user: another_user, category: another_category)
     visit root_path
 
     click_link category.name
@@ -39,12 +42,13 @@ feature 'Search Categories' do
   end
 
   scenario 'index of categories to product details' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'other@company.com')
     category = create(:category)
     another_category = create(:category, name: 'Category B')
-    product = create(:product, user: another_user, category:  category)
-    another_product = create(:product,name: 'another', user: another_user, category:  another_category)
+    product = create(:product, user: another_user, category: category)
+    create(:product, name: 'another', user: another_user, category: another_category)
     visit root_path
 
     click_link category.name

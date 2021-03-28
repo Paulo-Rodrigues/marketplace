@@ -10,7 +10,7 @@ class Product < ApplicationRecord
 
   validates :name, :description, :price, presence: true
 
-  enum status: {available: 0, suspended: 10, disabled: 20}
+  enum status: { available: 0, suspended: 10, disabled: 20 }
 
   after_find :suspended_by_reports
 

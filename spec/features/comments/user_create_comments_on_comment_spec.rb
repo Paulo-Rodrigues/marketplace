@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User create comments/response on comment on a product page' do
   scenario 'successfully' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     Comment.create!(commentable: product, user: user, body: 'outro')
@@ -17,6 +18,5 @@ feature 'User create comments/response on comment on a product page' do
 
     expect(page).to have_content('Comentário enviado com sucesso')
     expect(page).to have_content('outro')
-
   end
 end

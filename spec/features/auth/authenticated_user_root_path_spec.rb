@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Authenticated user root path' do
   scenario 'root to products index' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
 
     visit root_path
 

@@ -14,25 +14,26 @@ class User < ApplicationRecord
 
   before_validation :set_company
 
-  scope :retrieve_company_users, -> (user) {where(company: user.company) - where(id: user.id)}
+  scope :retrieve_company_users, ->(user) { where(company: user.company) - where(id: user.id) }
 
   def has_full_profile?
     name.present? && surname.present? && department.present?
   end
 
   def reported?(user)
-    Report.where(reportable: user, user: self).exists?
+    Report.exists?(reportable: user, user: self)
   end
 
   def favorite?(product)
-    Favorite.where(user: self, product: product).exists?
+    Favorite.exists?(user: self, product: product)
   end
 
   def reported?(product)
-    Report.where(user: self, reportable: product).exists?
+    Report.exists?(user: self, reportable: product)
   end
 
   private
+
   def set_company
     existent_company = Company.find_by(name: company_name)
     self.company = existent_company || Company.create(name: company_name)

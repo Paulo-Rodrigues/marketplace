@@ -8,7 +8,8 @@ feature 'User view products from the same company employees' do
   end
 
   scenario 'no products' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
 
     visit products_path
 
@@ -20,7 +21,8 @@ feature 'User view products from the same company employees' do
     employee2 = create(:user_with_profile, email: 'test2@company.com')
     employee1_products = create(:product, user: employee1)
     employee2_products = create(:product, user: employee2)
-    user = create(:user, email: 'testuser@company.com'); login_as(user)
+    user = create(:user, email: 'testuser@company.com')
+    login_as(user)
 
     visit products_path
 
@@ -35,7 +37,8 @@ feature 'User view products from the same company employees' do
     employee1_products = create(:product, user: employee1)
     employee2_products = create(:product, user: employee2)
     employee3_products = create(:product, name: 'Not appear', user: employee3)
-    user = create(:user, email: 'testuser@company.com'); login_as(user)
+    user = create(:user, email: 'testuser@company.com')
+    login_as(user)
 
     visit products_path
 
@@ -52,7 +55,8 @@ feature 'User view products from the same company employees' do
     employee1_products = create(:product, user: employee1)
     employee2_products = create(:product, user: employee2)
     employee3_products = create(:product, name: 'Not appear', user: employee3, status: :suspended)
-    user = create(:user, email: 'testuser@company.com'); login_as(user)
+    user = create(:user, email: 'testuser@company.com')
+    login_as(user)
 
     visit products_path
 
@@ -65,7 +69,8 @@ feature 'User view products from the same company employees' do
   scenario 'with details' do
     employee1 = create(:user_with_profile)
     employee1_products = create(:product, user: employee1)
-    user = create(:user, email: 'testuser@company.com'); login_as(user)
+    user = create(:user, email: 'testuser@company.com')
+    login_as(user)
 
     visit products_path
 

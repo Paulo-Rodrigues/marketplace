@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User confirm or cancel order' do
   scenario 'User confirm a sell' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: user)
     order = Order.create!(product: product, seller: user, buyer: another_user)
@@ -23,7 +24,8 @@ feature 'User confirm or cancel order' do
   end
 
   scenario 'User cancel sell' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: user)
     order = Order.create!(product: product, seller: user, buyer: another_user)
@@ -55,7 +57,8 @@ feature 'User confirm or cancel order' do
   end
 
   scenario 'links to confirm or cancel order(Seller)' do
-    user = create(:user_with_profile);login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: user)
     order = Order.create!(product: product, seller: user, buyer: another_user)

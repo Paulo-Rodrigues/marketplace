@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :notification do
     user { nil }
-    body { "MyText" }
+    body { 'MyText' }
   end
 end

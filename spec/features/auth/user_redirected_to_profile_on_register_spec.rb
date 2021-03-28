@@ -42,7 +42,8 @@ feature 'User redirected to profile on registering' do
   end
 
   scenario 'only user with full profile info can buy or sell (message)' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     visit profile_path(user)
 
     expect(page).to have_content('Apenas usuários com o perfil completo podem comprar ou vender')

@@ -32,12 +32,12 @@ describe 'Products api' do
       puts response.body
 
       expect(response).to have_http_status(:ok)
-      expect(response.body). to include(product.name)
-      expect(response.body). to include(product.status)
-      expect(response.body). to include(product.price.to_s)
-      expect(response.body). to include(product.description)
-      expect(response.body). to include(product.user_id.to_s)
-      expect(response.body). to include(product.user.email)
+      expect(response.body).to include(product.name)
+      expect(response.body).to include(product.status)
+      expect(response.body).to include(product.price.to_s)
+      expect(response.body).to include(product.description)
+      expect(response.body).to include(product.user_id.to_s)
+      expect(response.body).to include(product.user.email)
     end
   end
 end

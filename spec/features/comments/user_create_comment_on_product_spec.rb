@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User create comment on product' do
   scenario 'successfully' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
 

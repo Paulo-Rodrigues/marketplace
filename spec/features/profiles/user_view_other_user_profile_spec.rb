@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User view other user profile' do
   scenario 'list of users' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     other_user = create(:user, email: 'test2@company.com')
     third_user = create(:user, email: 'test3@company.com')
     other_company = create(:user, email: 'test3@other.com')
@@ -16,7 +17,8 @@ feature 'User view other user profile' do
   end
 
   scenario 'with user info' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     other_user = create(:user_with_profile, email: 'test2@company.com')
 
     visit root_path
@@ -29,10 +31,11 @@ feature 'User view other user profile' do
   end
 
   scenario 'with list of user products' do
-    user = create(:user); login_as(user)
+    user = create(:user)
+    login_as(user)
     other_user = create(:user_with_profile, email: 'test2@company.com')
-    p1 = create(:product, user: other_user)
-    p2 = create(:product, user: other_user)
+    create(:product, user: other_user)
+    create(:product, user: other_user)
 
     visit root_path
     click_on 'Outros colaboradores'

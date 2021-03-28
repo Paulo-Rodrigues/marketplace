@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Admin create a Category' do
   scenario 'List of Categories' do
-    admin = create(:admin); login_as(admin)
+    admin = create(:admin)
+    login_as(admin)
     categories = create_list(:categories, 3)
 
     visit admin_root_path
@@ -15,7 +16,8 @@ feature 'Admin create a Category' do
   end
 
   scenario 'link to create category' do
-    admin = create(:admin); login_as(admin)
+    admin = create(:admin)
+    login_as(admin)
 
     visit admin_root_path
 
@@ -25,7 +27,8 @@ feature 'Admin create a Category' do
   end
 
   scenario 'succeessfully' do
-    admin = create(:admin); login_as(admin)
+    admin = create(:admin)
+    login_as(admin)
 
     visit admin_root_path
 
@@ -38,8 +41,9 @@ feature 'Admin create a Category' do
   end
 
   scenario 'List of Categories' do
-    admin = create(:admin); login_as(admin)
-    categories = create_list(:categories, 3)
+    admin = create(:admin)
+    login_as(admin)
+    create_list(:categories, 3)
 
     visit admin_root_path
 
@@ -50,5 +54,4 @@ feature 'Admin create a Category' do
 
     expect(Category.count).to eq(4)
   end
-
 end

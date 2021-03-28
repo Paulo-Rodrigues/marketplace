@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Admin receive a report on user' do
   scenario 'link to admin reports' do
-    admin = create(:admin); login_as(admin)
+    admin = create(:admin)
+    login_as(admin)
 
     visit admin_root_path
 
@@ -12,8 +13,9 @@ feature 'Admin receive a report on user' do
   scenario 'receive a report' do
     user1 = create(:user)
     user2 = create(:user_with_profile, email: 'other@company.com')
-    report = Report.create!(reportable: user2, user: user1, reason: 'good reason')
-    admin = create(:admin); login_as(admin)
+    Report.create!(reportable: user2, user: user1, reason: 'good reason')
+    admin = create(:admin)
+    login_as(admin)
 
     visit admin_root_path
 
@@ -27,7 +29,8 @@ feature 'Admin receive a report on user' do
     user1 = create(:user)
     user2 = create(:user_with_profile, email: 'other@company.com')
     report = Report.create!(reportable: user2, user: user1, reason: 'good reason')
-    admin = create(:admin); login_as(admin)
+    admin = create(:admin)
+    login_as(admin)
 
     visit admin_root_path
 

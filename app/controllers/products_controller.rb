@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :suspend, :activate, :edit, :update]
+  before_action :set_product, only: %i[show suspend activate edit update]
 
   def index
     @products = Product.available_products(current_user)
     @categories = Category.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @product = Product.new
@@ -25,9 +24,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @product.update(product_params)

@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'User wishlist' do
   scenario 'links' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
-    product = create(:product, user: another_user)
+    create(:product, user: another_user)
 
     visit root_path
 
@@ -16,8 +17,9 @@ feature 'User wishlist' do
   end
 
   scenario 'links (only other users)' do
-    user = create(:user_with_profile); login_as(user)
-    product = create(:product, user: user)
+    user = create(:user_with_profile)
+    login_as(user)
+    create(:product, user: user)
 
     visit root_path
 
@@ -26,9 +28,10 @@ feature 'User wishlist' do
   end
 
   scenario 'links (desfavorite)' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
-    product = create(:product, user: another_user)
+    create(:product, user: another_user)
 
     visit root_path
 
@@ -40,7 +43,8 @@ feature 'User wishlist' do
   end
 
   scenario 'favorite a product' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
 
@@ -53,9 +57,10 @@ feature 'User wishlist' do
   end
 
   scenario 'unfavorite a product' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
-    product = create(:product, user: another_user)
+    create(:product, user: another_user)
 
     visit root_path
 
@@ -66,7 +71,8 @@ feature 'User wishlist' do
   end
 
   scenario 'products index' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     Favorite.create!(user: user, product: product)
@@ -80,7 +86,8 @@ feature 'User wishlist' do
   end
 
   scenario 'remove products index' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     Favorite.create!(user: user, product: product)
@@ -94,7 +101,8 @@ feature 'User wishlist' do
   end
 
   scenario 'go to product details' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
     Favorite.create!(user: user, product: product)

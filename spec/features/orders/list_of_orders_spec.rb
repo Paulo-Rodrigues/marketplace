@@ -2,11 +2,12 @@ require 'rails_helper'
 
 feature 'User view a list of orders' do
   scenario 'as seller or buyer' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     third_user = create(:user_with_profile, email: 'third@company.com')
     product1 = create(:product, user: another_user)
-    product2 = create(:product, user: user)
+    create(:product, user: user)
     product3 = create(:product, name: 'Third', user: another_user)
     buyer_order = Order.create!(product: product1, seller: another_user, buyer: user)
     seller_order = Order.create!(product: product1, seller: user, buyer: another_user)
@@ -21,12 +22,13 @@ feature 'User view a list of orders' do
   end
 
   scenario 'with details' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product1 = create(:product, user: another_user)
-    product2 = create(:product, user: user)
+    create(:product, user: user)
     buyer_order = Order.create!(product: product1, seller: another_user, buyer: user)
-    seller_order = Order.create!(product: product1, seller: user, buyer: another_user)
+    Order.create!(product: product1, seller: user, buyer: another_user)
 
     visit root_path
     click_link 'Minhas compras e vendas'

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'User report a product' do
   scenario 'link to report' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
 
@@ -12,7 +13,8 @@ feature 'User report a product' do
   end
 
   scenario 'link to report' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
 
@@ -26,7 +28,8 @@ feature 'User report a product' do
   end
 
   scenario 'link to report not showed' do
-    user = create(:user_with_profile); login_as(user)
+    user = create(:user_with_profile)
+    login_as(user)
     another_user = create(:user_with_profile, email: 'another@company.com')
     product = create(:product, user: another_user)
 
